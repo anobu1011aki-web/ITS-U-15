@@ -3,69 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ITS U-15</title>
+    <title>ITS U-15 | 国際旅行社が地域の子どもたちが主役になれる新しいハンドボールチームを設立</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap');
         body { font-family: 'Noto Sans JP', sans-serif; scroll-behavior: smooth; }
         
-        /* サイドメニューの動き */
-        #menu-toggle:checked ~ .side-menu { left: 0; }
-        #menu-toggle:checked ~ .menu-overlay { opacity: 1; pointer-events: auto; }
-        .side-menu { position: fixed; top: 0; left: -100%; width: 80%; max-width: 300px; height: 100%; background: white; z-index: 1000; transition: 0.4s; box-shadow: 20px 0 50px rgba(0,0,0,0.1); }
-        .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 999; opacity: 0; pointer-events: none; transition: 0.4s; }
+        .brand-gradient {
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+        }
 
-        /* メイン画像の位置調整（円陣を真ん中に） */
+        /* 背景画像設定 */
         .hero-image-bg {
             background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('IMG_7967.jpg');
             background-size: cover;
-            background-position: 20% center; /* ここで位置を微調整 */
+            
+            /* 修正のポイント：
+               1つ目の数値（横方向）を「center」から「20%」に変更。
+               これは「画像の左端から20%の位置を、画面の左端に合わせる」という意味になり、
+               相対的に画像全体が右へ移動し、円陣が中央に寄ります。
+            */
+            background-position: 37% center; 
+            
             background-repeat: no-repeat;
+        }
+
+        .message-image-bg {
+            background-image: linear-gradient(rgba(79, 70, 229, 0.85), rgba(168, 85, 247, 0.85)), url('IMG_7965.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .contact-image-bg {
+            background-image: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url('IMG_7969.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 8px;
+            font-weight: 900;
+            font-size: 1.25rem;
+            color: #1e293b;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, #6366f1, #ec4899);
+            border-radius: 2px;
+        }
+
+        .staff-card, .info-card {
+            background: #ffffff;
+            border-radius: 40px;
+            padding: 2.5rem 1.5rem;
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            border: 1px solid #f1f5f9;
+        }
+
+        .info-label {
+            font-size: 11px;
+            font-weight: 900;
+            color: #6366f1;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            display: flex;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+        
+        .info-value {
+            font-size: 13px;
+            font-weight: 700;
+            color: #334155;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .history-item {
+            position: relative;
+            padding-left: 1.25rem;
+            margin-bottom: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #475569;
+        }
+        .history-item::before {
+            content: '■';
+            position: absolute;
+            left: 0;
+            color: #6366f1;
+            font-size: 10px;
+            top: 2px;
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
         }
     </style>
 </head>
-<body class="bg-slate-100">
-
-    <input type="checkbox" id="menu-toggle" class="hidden">
-    <label for="menu-toggle" class="menu-overlay"></label>
-
-    <div class="side-menu p-8">
-        <div class="flex justify-between items-center mb-10">
-            <div class="font-black text-xl text-indigo-600 italic">MENU</div>
-            <label for="menu-toggle" class="text-slate-400 text-2xl cursor-pointer"><i class="fa-solid fa-xmark"></i></label>
-        </div>
-        <nav class="flex flex-col space-y-6">
-            <a href="#background" class="text-lg font-black text-slate-700" onclick="document.getElementById('menu-toggle').checked = false;">創部の背景</a>
-            <a href="#staff" class="text-lg font-black text-slate-700" onclick="document.getElementById('menu-toggle').checked = false;">スタッフ紹介</a>
-            <a href="#schedule" class="text-lg font-black text-slate-700" onclick="document.getElementById('menu-toggle').checked = false;">活動詳細</a>
-            <a href="#contact" class="text-lg font-black text-slate-700" onclick="document.getElementById('menu-toggle').checked = false;">お問い合わせ</a>
-        </nav>
-    </div>
+<body class="bg-slate-100 text-slate-800 leading-relaxed">
 
     <div class="max-w-[480px] mx-auto bg-white min-h-screen shadow-2xl relative">
 
         <nav class="sticky top-0 z-[100] bg-white border-b border-slate-100 px-6 py-3 flex justify-between items-center shadow-sm">
-            <div class="flex items-center space-x-4">
-                <label for="menu-toggle" class="text-slate-600 text-xl cursor-pointer active:scale-90 transition-transform">
-                    <i class="fa-solid fa-bars"></i>
-                </label>
-                <div class="font-black text-xl tracking-tighter text-indigo-600">ITS U-15</div>
-            </div>
-            <a href="#contact" class="bg-indigo-600 text-white text-[10px] font-black px-4 py-2 rounded-full shadow-lg shadow-indigo-200">体験申込</a>
+            <div class="font-black text-xl tracking-tighter text-indigo-600">ITS U-15</div>
+            <a href="#contact" class="bg-indigo-600 text-white text-[10px] font-black px-4 py-2 rounded-full">体験申込</a>
         </nav>
 
         <header class="hero-image-bg relative w-full pt-20 pb-24 px-8 text-center text-white">
             <div class="relative z-10">
-                <div class="inline-block bg-[#ec4899]/90 text-[10px] font-black px-4 py-1 rounded-full tracking-[0.2em] mb-4 border border-white/30 backdrop-blur-sm">ITS U-15 GIRLS</div>
-                <h1 class="text-3xl font-black leading-tight tracking-tighter mb-4 drop-shadow-lg">ハンドボールで<br>沖縄の未来をつなぐ</h1>
-                <p class="text-[11px] font-bold opacity-90 mb-8">国際旅行社がプロデュースする地域クラブ型の女子ハンドボールチーム</p>
-                
-                <div class="inline-flex flex-col items-center justify-center bg-black/30 backdrop-blur-sm py-4 px-8 rounded-2xl border border-white/10 mx-auto">
+                <div class="inline-block bg-[#ec4899]/90 text-[10px] font-black px-4 py-1 rounded-full tracking-[0.2em] mb-4 border border-white/30 backdrop-blur-sm">
+                    ITS U-15 GIRLS
+                </div>
+                <h1 class="text-3xl font-black leading-tight tracking-tighter mb-4 drop-shadow-lg">
+                    ハンドボールで<br>
+                    沖縄の未来をつなぐ
+                </h1>
+                <p class="text-[11px] font-bold opacity-90 leading-relaxed mb-8 drop-shadow-md">
+                    国際旅行社がプロデュースする<br>
+                    地域クラブ型の女子ハンドボールチーム
+                </p>
+               <div class="inline-flex flex-col items-center justify-center bg-black/30 backdrop-blur-sm py-4 px-8 rounded-2xl border border-white/10 opacity-100 mb-4 mx-auto">
                     <p class="text-[10px] font-black tracking-widest uppercase mb-2 text-white/70">supported by</p>
                     <div class="w-12 border-t border-white/20 mb-3"></div>
                     <img src="logo_footer_sp.png" alt="株式会社 国際旅行社" class="w-[110px] h-auto object-contain opacity-70 mb-1.5">
-                    <p class="text-[9px] font-medium tracking-tight text-white/60 uppercase">International Travel Service Inc.</p>
+                    <p class="text-[9px] font-medium tracking-tight text-white/60">International Travel Service Inc.</p>
                 </div>
             </div>
         </header>
