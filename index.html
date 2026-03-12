@@ -432,6 +432,34 @@
         </section>
 
     </div>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // 画面内に入ったら hidden を外して visible をつける
+                    entry.target.classList.add('fade-in-visible');
+                }
+            });
+        }, { threshold: 0.1 }); // 10%見えたら実行
+
+        document.querySelectorAll('.fade-in-hidden').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+
+    <style>
+        /* 初期状態：透明で少し下に配置 */
+        .fade-in-hidden {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        /* 実行状態：不透明になり元の位置へ */
+        .fade-in-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 
 </body>
 </html>
