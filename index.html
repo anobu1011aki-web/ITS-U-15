@@ -428,5 +428,28 @@
         </section>
 
     </div>
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const closeBtn = document.getElementById('close-btn');
+        const overlay = document.getElementById('menu-overlay');
+        const menuLinks = document.querySelectorAll('.menu-link');
+
+        // メニューを開く
+        menuBtn.addEventListener('click', () => {
+            overlay.classList.remove('opacity-0', 'pointer-events-none');
+        });
+
+        // メニューを閉じる関数
+        const closeMenu = () => {
+            overlay.classList.add('opacity-0', 'pointer-events-none');
+        };
+
+        closeBtn.addEventListener('click', closeMenu);
+
+        // メニューの項目をクリックしたら自動で閉じる
+        menuLinks.forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+    </script>
     </body>
 </html>
