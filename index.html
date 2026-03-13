@@ -100,17 +100,18 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 0.5rem;
         }
+/* スマホ操作を前提としたパートナー枠：浮き上がる効果へ修正 */
+#partner .aspect-\[2\/1\] {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+}
 
-        #partner .aspect-\[2\/1\] {
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        #partner .aspect-\[2\/1\]:active,
-        #partner .aspect-\[2\/1\]:hover {
-            transform: scale(0.98);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        }
+/* 指が触れた時（スマホ）またはマウスが乗った時（PC）に浮き上がる */
+#partner .aspect-\[2\/1\]:active,
+#partner .aspect-\[2\/1\]:hover {
+    transform: translateY(-4px); /* 上に4px浮く */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* 影を強くして浮遊感を出す */
+}
     </style>
 </head>
 <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
