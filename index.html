@@ -297,6 +297,11 @@
   </div>
 
   <main>
+  <button id="back-to-top" class="back-to-top-btn" aria-label="トップへ戻る">
+    <i class="fa-solid fa-chevron-up"></i>
+  </button>
+  <script>
+
     <header class="hero-image-bg relative w-full min-h-[80vh] flex items-center justify-center px-8 text-center text-white">
       <div class="relative z-10 py-12">
         <div class="inline-block bg-[#ec4899]/90 text-[10px] font-black px-4 py-1 rounded-full tracking-[0.2em] mb-4 border border-white/30 backdrop-blur-sm">
@@ -608,52 +613,39 @@
     </section>
   </main>
 
-  <script>
+    <script>
     document.addEventListener('DOMContentLoaded', () => {
       // --- メニュー制御 ---
       const menuBtn = document.getElementById('menu-btn');
       const closeBtn = document.getElementById('close-btn');
       const overlay = document.getElementById('menu-overlay');
       const menuLinks = document.querySelectorAll('.menu-link');
-      
       const closeMenu = () => overlay.classList.add('opacity-0', 'pointer-events-none');
-      
       menuBtn?.addEventListener('click', () => overlay.classList.remove('opacity-0', 'pointer-events-none'));
       closeBtn?.addEventListener('click', closeMenu);
       menuLinks.forEach(link => link.addEventListener('click', closeMenu));
 
-      // --- セクションタイトル＆スクロールフェードアップの監視 ---
-      // フェードアップ用
+      // --- スクロールアニメーションの監視 ---
       const fadeUpObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            // 一度表示されたら監視を解除したい場合は下のコメントアウトを外します
-            // fadeUpObserver.unobserve(entry.target);
-          }
+          if (entry.isIntersecting) entry.target.classList.add('is-visible');
         });
-      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
+      }, { threshold: 0.1 });
       document.querySelectorAll('.fade-up').forEach(el => fadeUpObserver.observe(el));
 
-      // タイトルのアンダーラインアニメーション用
       const titleObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) entry.target.classList.add('is-active');
         });
       }, { threshold: 0.2 });
-      
       document.querySelectorAll('.section-title').forEach(title => titleObserver.observe(title));
 
-      // --- パートナーロゴの2ステップ・タップ制御 (タッチデバイス向け) ---
+      // --- パートナーロゴのタップ制御 ---
       const partnerLinks = document.querySelectorAll('.partner-link');
-      
       partnerLinks.forEach(link => {
         link.addEventListener('click', function(e) {
           if (window.matchMedia('(hover: none) or (pointer: coarse)').matches) {
-            const isSelected = this.classList.contains('is-selected');
-            
-            if (!isSelected) {
+            if (!this.classList.contains('is-selected')) {
               e.preventDefault(); 
               partnerLinks.forEach(l => l.classList.remove('is-selected'));
               this.classList.add('is-selected');
@@ -662,43 +654,21 @@
           }
         });
       });
+      document.addEventListener('click', () => partnerLinks.forEach(l => l.classList.remove('is-selected')));
 
-      document.addEventListener('click', () => {
-        partnerLinks.forEach(l => l.classList.remove('is-selected'));
-      });
-    });
-    // 3. JS: スクロール量に応じてボタンを出したり消したりする
-window.addEventListener('scroll', function() {
-  const btn = document.getElementById('back-to-top');
-  if (window.scrollY > 300) { // 300px以上スクロールしたら
-    btn.classList.add('is-visible');
-  } else {
-    btn.classList.remove('is-visible');
-  }
-});
-
-// ボタンを押したらスルスルと上に上がる
-document.getElementById('back-to-top').addEventListener('click', function() {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
-});
+      // --- トップへ戻るボタンの表示・動作制御 ---
       const backToTop = document.getElementById('back-to-top');
       window.addEventListener('scroll', () => {
         if (window.scrollY > 400) {
-          backToTop.classList.add('show');
+          backToTop.classList.add('is-visible');
         } else {
-          backToTop.classList.remove('show');
+          backToTop.classList.remove('is-visible');
         }
       });
-      backToTop.addEventListener('click', () => {
+      backToTop?.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     });
-  </script>
-</body>
-
   </script>
 </body>
 </html>
