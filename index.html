@@ -120,57 +120,55 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 0.5rem;
     }
-
-    /* --- パートナー枠のUX改善 --- */
+/* --- パートナー枠のUX改善（スライドラベル案） --- */
 #partner .partner-link {
     position: relative;
     overflow: hidden;
-    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
     -webkit-tap-highlight-color: transparent;
 }
 
-/* 「VIEW SITE」の見た目を調整 */
+/* 下から出てくるラベル */
 #partner .partner-link::after {
-  content: 'VIEW SITE';
-  position: absolute;
-  inset: 0;
-  
-  /* 文字色をメインカラーのインディゴ(#6366f1)に変更 */
-  color: #6366f1;
-  
-  /* 背景を非常に透明に変更 (不透明度を 0.9 から 0.1 に下げる) */
-  background-color: rgba(99, 102, 241, 0.1);
-  
-  font-size: 10px;
-  font-weight: 900;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-  letter-spacing: 0.1em;
+    content: 'サイトを表示する \f08e'; /* アイコン付き */
+    font-family: 'Noto Sans JP', 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 32px; /* ラベルの高さ */
+    background: #6366f1; /* メインカラー（ベタ塗り） */
+    color: #ffffff; /* 文字は白の方が視認性が高いです */
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(100%); /* 最初は隠しておく */
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+    letter-spacing: 0.05em;
 }
 
 /* 選択（1回目タップ）時の状態 */
 #partner .partner-link.is-selected {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(99, 102, 241, 0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(99, 102, 241, 0.15);
     border-color: #6366f1;
-    z-index: 10;
 }
 
+/* 選択時にラベルをスライドアップ */
 #partner .partner-link.is-selected::after {
-    opacity: 1;
+    transform: translateY(0);
 }
 
+/* ロゴを少し上にずらして重なりを防ぐ */
 #partner .partner-link.is-selected img {
-    filter: blur(2px) grayscale(100%);
-    transform: scale(0.9);
+    transform: translateY(-10px) scale(0.85);
 }
 
 #partner .partner-link img {
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
     /* テキストアニメーション */
