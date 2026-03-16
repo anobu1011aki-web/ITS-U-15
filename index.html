@@ -1,4 +1,4 @@
-　<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
@@ -19,6 +19,15 @@
     ========================================= */
     .brand-gradient {
       background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+    }
+
+    /* テキスト用グラデーション */
+    .text-gradient {
+      background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
     }
 
     .hero-image-bg {
@@ -224,32 +233,36 @@
     .delay-300 { transition-delay: 0.3s; }
     .delay-400 { transition-delay: 0.4s; }
 
-    /* トップへ戻るボタン */
+    /* トップへ戻るボタン（Goodデザイン復元版） */
     .back-to-top-btn {
       position: fixed;
       bottom: 24px;
       right: 24px;
-      width: 48px;
-      height: 48px;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
-      background: #6366f1;
+      background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
       color: white;
       display: flex;
-      items-center: center;
+      align-items: center;
       justify-content: center;
       z-index: 1000;
       opacity: 0;
       visibility: hidden;
       transform: translateY(20px);
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+      box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4);
       border: none;
       cursor: pointer;
+      font-size: 1.2rem;
     }
     .back-to-top-btn.is-visible {
       opacity: 1;
       visibility: visible;
       transform: translateY(0);
+    }
+    .back-to-top-btn:active {
+      transform: scale(0.9);
     }
   </style>
 </head>
@@ -258,9 +271,9 @@
 
   <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
     <div class="px-6 py-4 flex justify-between items-center">
-      <h1 class="text-xl font-black tracking-tighter text-indigo-900">ITS U-15</h1>
-      <button id="menu-btn" class="text-indigo-900 focus:outline-none" aria-label="メニューを開く">
-        <i class="fa-solid fa-bars text-2xl"></i>
+      <h1 class="text-xl font-black tracking-tighter text-gradient">ITS U-15</h1>
+      <button id="menu-btn" class="focus:outline-none" aria-label="メニューを開く">
+        <i class="fa-solid fa-bars text-2xl text-gradient"></i>
       </button>
     </div>
   </header>
