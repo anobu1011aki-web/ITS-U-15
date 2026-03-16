@@ -133,7 +133,7 @@
         }
 
         /* =========================================
-           パートナー枠のUX改善 (原本そのまま)
+           パートナー枠の挙動 (原本通り)
         ========================================= */
         #partner .partner-link {
             position: relative;
@@ -164,7 +164,9 @@
             letter-spacing: 0.05em;
         }
 
-        #partner .partner-link img { transition: transform 0.3s ease; }
+        #partner .partner-link img {
+            transition: transform 0.3s ease;
+        }
 
         @media (hover: hover) and (pointer: fine) {
             #partner .partner-link:hover {
@@ -172,8 +174,12 @@
                 box-shadow: 0 10px 20px rgba(99, 102, 241, 0.15);
                 border-color: #6366f1;
             }
-            #partner .partner-link:hover::after { transform: translateY(0); }
-            #partner .partner-link:hover img { transform: translateY(-10px) scale(0.85); }
+            #partner .partner-link:hover::after {
+                transform: translateY(0);
+            }
+            #partner .partner-link:hover img {
+                transform: translateY(-10px) scale(0.85);
+            }
         }
 
         #partner .partner-link.is-selected {
@@ -181,8 +187,12 @@
             box-shadow: 0 10px 20px rgba(99, 102, 241, 0.15);
             border-color: #6366f1;
         }
-        #partner .partner-link.is-selected::after { transform: translateY(0); }
-        #partner .partner-link.is-selected img { transform: translateY(-10px) scale(0.85); }
+        #partner .partner-link.is-selected::after {
+            transform: translateY(0);
+        }
+        #partner .partner-link.is-selected img {
+            transform: translateY(-10px) scale(0.85);
+        }
 
         /* =========================================
            アニメーション
@@ -219,7 +229,7 @@
         .delay-300 { transition-delay: 0.3s; }
         .delay-400 { transition-delay: 0.4s; }
 
-        /* トップへ戻るボタン追加分 */
+        /* トップへ戻るボタン (追加分) */
         .back-to-top-btn {
             position: fixed;
             bottom: 24px;
@@ -410,21 +420,21 @@
                 <div class="bg-white p-6 rounded-[32px] border border-slate-100 shadow-sm fade-up delay-100">
                     <h4 class="text-xs font-black text-indigo-600 mb-4 flex items-center"><i class="fa-solid fa-calendar-days mr-2"></i> スケジュール・場所</h4>
                     <div class="schedule-grid">
-                        <div class="bg-indigo-50 p-3 rounded-2xl">
+                        <div class="bg-indigo-50 p-3 rounded-2xl text-center">
                             <p class="text-[9px] font-black text-indigo-400 mb-1">月曜 (月毎に調整)</p>
-                            <p class="text-[11px] font-black text-indigo-900">17:30-19:30<br><span class="text-[9px] opacity-70">@天久小学校体育館</span></p>
+                            <p class="text-[11px] font-black text-indigo-900 leading-tight">17:30-19:30<br><span class="text-[9px] opacity-70">@天久小学校体育館</span></p>
                         </div>
-                        <div class="bg-indigo-50 p-3 rounded-2xl">
+                        <div class="bg-indigo-50 p-3 rounded-2xl text-center">
                             <p class="text-[9px] font-black text-indigo-400 mb-1">火・金曜</p>
-                            <p class="text-[11px] font-black text-indigo-900">17:30-19:30<br><span class="text-[9px] opacity-70">@天久小学校体育館</span></p>
+                            <p class="text-[11px] font-black text-indigo-900 leading-tight">17:30-19:30<br><span class="text-[9px] opacity-70">@天久小学校体育館</span></p>
                         </div>
-                        <div class="bg-purple-50 p-3 rounded-2xl">
+                        <div class="bg-purple-50 p-3 rounded-2xl text-center">
                             <p class="text-[9px] font-black text-purple-400 mb-1">木曜 (月毎に調整)</p>
-                            <p class="text-[11px] font-black text-purple-900">18:00-19:30<br><span class="text-[9px] opacity-70">@松島中学校体育館</span></p>
+                            <p class="text-[11px] font-black text-purple-900 leading-tight">18:00-19:30<br><span class="text-[9px] opacity-70">@松島中学校体育館</span></p>
                         </div>
-                        <div class="bg-pink-50 p-3 rounded-2xl">
+                        <div class="bg-pink-50 p-3 rounded-2xl text-center">
                             <p class="text-[9px] font-black text-pink-400 mb-1">土・日曜</p>
-                            <p class="text-[11px] font-black text-pink-900">都度調整</p>
+                            <p class="text-[11px] font-black text-pink-900 leading-tight">都度調整</p>
                         </div>
                     </div>
                 </div>
@@ -515,6 +525,7 @@
             const closeBtn = document.getElementById('close-btn');
             const overlay = document.getElementById('menu-overlay');
             const menuLinks = document.querySelectorAll('.menu-link');
+            const partnerLinks = document.querySelectorAll('.partner-link');
             const backToTop = document.getElementById('back-to-top');
 
             menuBtn.onclick = () => overlay.classList.remove('opacity-0', 'pointer-events-none');
@@ -532,7 +543,26 @@
 
             document.querySelectorAll('.fade-up, .section-title').forEach(el => observer.observe(el));
 
-            // トップへ戻るボタンの表示制御
+            // パートナーセクションのアクション (原本通り)
+            partnerLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 1024) {
+                        if (!this.classList.contains('is-selected')) {
+                            e.preventDefault();
+                            partnerLinks.forEach(l => l.classList.remove('is-selected'));
+                            this.classList.add('is-selected');
+                        }
+                    }
+                });
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.partner-link')) {
+                    partnerLinks.forEach(l => l.classList.remove('is-selected'));
+                }
+            });
+
+            // トップへ戻るボタン
             window.onscroll = () => {
                 if (window.scrollY > 400) {
                     backToTop.classList.add('is-visible');
