@@ -1,566 +1,554 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ITS U-15 | 国際旅行社が地域の子どもたちが主役になれる新しいハンドボールチームを設立</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap');
-        body { font-family: 'Noto Sans JP', sans-serif; scroll-behavior: smooth; }
-        
-        .brand-gradient {
-            background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
-        }
-        .hero-image-bg {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('IMG_7967.jpg');
-            background-size: cover;
-            background-position: 37% center; 
-            background-repeat: no-repeat;
-        }
-        .message-image-bg {
-            background-image: linear-gradient(rgba(79, 70, 229, 0.85), rgba(168, 85, 247, 0.85)), url('IMG_7965.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-        .contact-image-bg {
-            background-image: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url('IMG_7969.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-        .section-title {
-            position: relative;
-            display: inline-block;
-            font-size: 1.25rem;
-            font-weight: 900;
-            color: #1e1b4b;
-            letter-spacing: -0.025em;
-            line-height: 1;
-            padding-bottom: 10px;
-        }
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 4px;
-            background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
-            border-radius: 99px;
-            transition: width 1s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        .section-title.is-active::after {
-            width: 100%;
-        }
-        .staff-card {
-            background: #ffffff;
-            border-radius: 40px;
-            padding: 2.5rem 1.5rem;
-            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-            border: 1px solid #f1f5f9;
-        }
-        .info-label {
-            font-size: 11px;
-            font-weight: 900;
-            color: #6366f1;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            display: flex;
-            align-items: center;
-            margin-bottom: 4px;
-        }
-        .info-value {
-            font-size: 13px;
-            font-weight: 700;
-            color: #334155;
-            line-height: 1.6;
-            margin-bottom: 16px;
-        }
-        .history-item {
-            position: relative;
-            padding-left: 1.25rem;
-            margin-bottom: 8px;
-            font-size: 12px;
-            font-weight: 700;
-            color: #475569;
-        }
-        .history-item::before {
-            content: '■';
-            position: absolute;
-            left: 0;
-            color: #6366f1;
-            font-size: 10px;
-            top: 2px;
-        }
-        .schedule-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0.5rem;
-        }
-/* スマホ操作を前提としたパートナー枠：浮き上がる効果へ修正 */
-#partner .aspect-\[2\/1\] {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    -webkit-tap-highlight-color: transparent;
-}
-#partner .aspect-\[2\/1\]:active,
-#partner .aspect-\[2\/1\]:hover {
-    transform: translateY(-4px); /* 上に4px浮く */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* 影を強くして浮遊感を出す */
-}
-@keyframes revealText {
-    0% { transform: translateY(100%); }
-    100% { transform: translateY(0); }
-}
-.reveal-container {
-    display: block;
-    overflow: hidden;
-    vertical-align: bottom;
-}
-.reveal-item {
-    display: inline-block;
-    transform: translateY(100%);
-    animation: revealText 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-.delay-1 { animation-delay: 0.6s; }
-.delay-1-5 { animation-delay: 0.75s; }
-.delay-2 { animation-delay: 1.2s; }
-}
-        .partner-link.is-selected {
-    transform: translateY(-8px); /* 少し高めに浮かせます */
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-    border-color: #6366f1; /* 枠線を青くして「選択中」を強調 */
-    z-index: 10;
-}
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ITS U-15 | 国際旅行社が地域の子どもたちが主役になれる新しいハンドボールチームを設立</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap');
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    /* グローバルスタイル */
+    .brand-gradient {
+      background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+    }
+
+    /* セクション背景 */
+    .hero-image-bg {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('IMG_7967.jpg');
+      background-size: cover;
+      background-position: 37% center;
+      background-repeat: no-repeat;
+    }
+
+    .message-image-bg {
+      background-image: linear-gradient(rgba(79, 70, 229, 0.85), rgba(168, 85, 247, 0.85)), url('IMG_7965.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .contact-image-bg {
+      background-image: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url('IMG_7969.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    /* タイトルアニメーション */
+    .section-title {
+      position: relative;
+      display: inline-block;
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: #1e1b4b;
+      letter-spacing: -0.025em;
+      line-height: 1;
+      padding-bottom: 10px;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 4px;
+      background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+      border-radius: 99px;
+      transition: width 1s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .section-title.is-active::after {
+      width: 100%;
+    }
+
+    /* コンポーネント */
+    .staff-card {
+      background: #ffffff;
+      border-radius: 40px;
+      padding: 2.5rem 1.5rem;
+      box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+      border: 1px solid #f1f5f9;
+    }
+
+    .info-label {
+      font-size: 11px;
+      font-weight: 900;
+      color: #6366f1;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      display: flex;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+
+    .info-value {
+      font-size: 13px;
+      font-weight: 700;
+      color: #334155;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .history-item {
+      position: relative;
+      padding-left: 1.25rem;
+      margin-bottom: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #475569;
+    }
+
+    .history-item::before {
+      content: '■';
+      position: absolute;
+      left: 0;
+      color: #6366f1;
+      font-size: 10px;
+      top: 2px;
+    }
+
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+    }
+
+    /* パートナーロゴ操作 */
+    .partner-link {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .partner-link:active,
+    .partner-link:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .partner-link.is-selected {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      border-color: #6366f1;
+      z-index: 10;
+    }
+
+    /* テキストアニメーション */
+    @keyframes revealText {
+      0% { transform: translateY(100%); }
+      100% { transform: translateY(0); }
+    }
+
+    .reveal-container {
+      display: block;
+      overflow: hidden;
+      vertical-align: bottom;
+    }
+
+    .reveal-item {
+      display: inline-block;
+      transform: translateY(100%);
+      animation: revealText 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .delay-1 { animation-delay: 0.6s; }
+    .delay-1-5 { animation-delay: 0.75s; }
+    .delay-2 { animation-delay: 1.2s; }
+  </style>
 </head>
-<header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
-        <div class="px-6 py-4 flex justify-between items-center">
-            <h1 class="text-xl font-black tracking-tighter text-indigo-900">ITS U-15</h1>
-            <button id="menu-btn" class="text-indigo-900 focus:outline-none">
-                <i class="fa-solid fa-bars text-2xl"></i>
-            </button>
+
+<body class="bg-white text-slate-900">
+
+  <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
+    <div class="px-6 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-black tracking-tighter text-indigo-900">ITS U-15</h1>
+      <button id="menu-btn" class="text-indigo-900 focus:outline-none">
+        <i class="fa-solid fa-bars text-2xl"></i>
+      </button>
+    </div>
+  </header>
+
+  <div id="menu-overlay" class="fixed inset-0 z-[60] bg-indigo-900/95 flex flex-col items-center justify-center transition-all duration-300 opacity-0 pointer-events-none">
+    <button id="close-btn" class="absolute top-6 right-6 text-white text-3xl">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <nav class="text-center space-y-6">
+      <a href="#background" class="menu-link block text-white text-lg font-bold">創部の背景</a>
+      <a href="#concept" class="menu-link block text-white text-lg font-bold">チーム概要</a>
+      <a href="#staff" class="menu-link block text-white text-lg font-bold">スタッフ紹介</a>
+      <a href="#activity" class="menu-link block text-white text-lg font-bold">活動詳細</a>
+      <a href="#instagram" class="menu-link block text-white text-lg font-bold">インスタグラム</a>
+      <a href="#partner" class="menu-link block text-white text-lg font-bold">パートナー</a>
+      <a href="#contact" class="menu-link block text-white text-lg font-bold">CONTACT</a>
+    </nav>
+  </div>
+
+  <main>
+    <header class="hero-image-bg relative w-full min-h-[80vh] flex items-center justify-center px-8 text-center text-white">
+      <div class="relative z-10 py-12">
+        <div class="inline-block bg-[#ec4899]/90 text-[10px] font-black px-4 py-1 rounded-full tracking-[0.2em] mb-4 border border-white/30 backdrop-blur-sm">
+          ITS U-15 GIRLS
         </div>
+        <h1 class="text-3xl font-black leading-tight tracking-tighter mb-4 drop-shadow-lg">
+          <span class="reveal-container"><span class="reveal-item delay-1">ハンドボールで</span></span>
+          <span class="reveal-container"><span class="reveal-item delay-1-5">沖縄の未来をつなぐ</span></span>
+        </h1>
+        <p class="text-[11px] font-bold opacity-90 leading-relaxed mb-8 drop-shadow-md">
+          <span class="reveal-container">
+            <span class="reveal-item delay-2">
+              地域の子どもたちが主役になれる<br>
+              新しい女子ハンドボールチームを設立
+            </span>
+          </span>
+        </p>
+        <div class="inline-flex flex-col items-center justify-center bg-black/30 backdrop-blur-sm py-4 px-8 rounded-2xl border border-white/10 opacity-100 mx-auto">
+          <p class="text-[10px] font-black tracking-widest uppercase mb-2 text-white/70">supported by</p>
+          <div class="w-12 border-t border-white/20 mb-3"></div>
+          <img src="logo_footer_sp.png" alt="株式会社 国際旅行社" class="w-[110px] h-auto object-contain opacity-70 mb-1.5">
+          <p class="text-[9px] font-medium tracking-tight text-white/60">International Travel Service Inc.</p>
+        </div>
+      </div>
     </header>
 
-    <div id="menu-overlay" class="fixed inset-0 z-[60] bg-indigo-900/95 flex flex-col items-center justify-center transition-all duration-300 opacity-0 pointer-events-none">
-        <button id="close-btn" class="absolute top-6 right-6 text-white text-3xl">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-        <nav class="text-center space-y-6">
-            <a href="#background" class="menu-link block text-white text-lg font-bold">創部の背景</a>
-            <a href="#concept" class="menu-link block text-white text-lg font-bold">チーム概要</a>
-            <a href="#staff" class="menu-link block text-white text-lg font-bold">スタッフ紹介</a>
-            <a href="#activity" class="menu-link block text-white text-lg font-bold">活動詳細</a>
-            <a href="#instagram" class="menu-link block text-white text-lg font-bold">インスタグラム</a>
-            <a href="#partner" class="menu-link block text-white text-lg font-bold">パートナー</a>
-            <a href="#contact" class="menu-link block text-white text-lg font-bold">CONTACT</a>
-        </nav>
-    </div>
+    <section id="background" class="py-20 px-6">
+      <div class="text-center mb-10">
+        <h2 class="section-title">創部の背景</h2>
+        <p class="text-[10px] font-bold text-slate-400 mt-2 tracking-widest uppercase text-center">Background</p>
+      </div>
 
-        <header class="hero-image-bg relative w-full min-h-[80vh] flex items-center justify-center px-8 text-center text-white">
-            <div class="relative z-10 py-12">
-                <div class="inline-block bg-[#ec4899]/90 text-[10px] font-black px-4 py-1 rounded-full tracking-[0.2em] mb-4 border border-white/30 backdrop-blur-sm">
-                    ITS U-15 GIRLS
-                </div>
-<h1 class="text-3xl font-black leading-tight tracking-tighter mb-4 drop-shadow-lg">
-    <span class="reveal-container"><span class="reveal-item delay-1">ハンドボールで</span></span>
-    <span class="reveal-container"><span class="reveal-item delay-1-5">沖縄の未来をつなぐ</span></span>
-</h1>
-<p class="text-[11px] font-bold opacity-90 leading-relaxed mb-8 drop-shadow-md">
-    <span class="reveal-container">
-        <span class="reveal-item delay-2">
-            地域の子どもたちが主役になれる<br>
-            新しい女子ハンドボールチームを設立
-        </span>
-    </span>
-</p>
-               <div class="inline-flex flex-col items-center justify-center bg-black/30 backdrop-blur-sm py-4 px-8 rounded-2xl border border-white/10 opacity-100 mx-auto">
-                    <p class="text-[10px] font-black tracking-widest uppercase mb-2 text-white/70">supported by</p>
-                    <div class="w-12 border-t border-white/20 mb-3"></div>
-                    <img src="logo_footer_sp.png" alt="株式会社 国際旅行社" class="w-[110px] h-auto object-contain opacity-70 mb-1.5">
-                    <p class="text-[9px] font-medium tracking-tight text-white/60">International Travel Service Inc.</p>
-                </div>
-            </div>
-        </header>
+      <div class="space-y-6">
+        <div class="border-l-4 border-indigo-500 pl-4">
+          <h3 class="text-sm font-black text-indigo-700 mb-2 leading-snug">
+            少子化と働き方改革、<br>部活動を巡る環境の大きな変化
+          </h3>
+          <p class="text-[12px] font-bold text-slate-600 leading-relaxed">
+            現在、少子化の影響で学校単位でのチーム維持が難しくなっています。また、教員が専門外の顧問を務める体制は、学校の働き方改革が進む中で限界を迎えています。
+          </p>
+        </div>
 
-        <section id="background" class="py-20 px-6">
-            <div class="text-center mb-10">
-                <h2 class="section-title">創部の背景</h2>
-                <p class="text-[10px] font-bold text-slate-400 mt-2 tracking-widest uppercase text-center">Background</p>
-            </div>
-            
-            <div class="space-y-6">
-                <div class="border-l-4 border-indigo-500 pl-4">
-                    <h3 class="text-sm font-black text-indigo-700 mb-2 leading-snug">
-                        少子化と働き方改革、<br>部活動を巡る環境の大きな変化
-                    </h3>
-                    <p class="text-[12px] font-bold text-slate-600 leading-relaxed">
-                        現在、少子化の影響で学校単位でのチーム維持が難しくなっています。また、教員が専門外の顧問を務める体制は、学校の働き方改革が進む中で限界を迎えています。
-                    </p>
-                </div>
+        <div class="bg-slate-50 p-6 rounded-3xl space-y-4">
+          <h3 class="text-[13px] font-black text-slate-800 text-center mb-2">私たちが解決したい課題</h3>
+          <div class="flex items-start space-x-3">
+            <span class="bg-indigo-600 text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+              <i class="fa-solid fa-road"></i>
+            </span>
+            <p class="text-[12px] font-bold text-slate-600">学校に部活がないから諦めるという選択をなくしたい</p>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="bg-purple-600 text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+              <i class="fa-solid fa-graduation-cap"></i>
+            </span>
+            <p class="text-[12px] font-bold text-slate-600">専門的な指導を提供し安全かつ正しい技術を伝えたい</p>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="bg-pink-600 text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+              <i class="fa-solid fa-house-chimney"></i>
+            </span>
+            <p class="text-[12px] font-bold text-slate-600">学校･家庭･企業が手を取り合い新しい居場所を作りたい</p>
+          </div>
+        </div>
+        <p class="text-[12px] font-bold text-indigo-700 leading-relaxed bg-indigo-50 p-4 rounded-xl text-center">
+          「うちなーんちゅの旅窓」国際旅行社として<br>子供たちの成長に一生涯伴走します
+        </p>
+      </div>
+    </section>
 
-                <div class="bg-slate-50 p-6 rounded-3xl space-y-4">
-                    <h3 class="text-[13px] font-black text-slate-800 text-center mb-2">私たちが解決したい課題</h3>
-                    
-                    <div class="flex items-start space-x-3">
-                        <span class="bg-indigo-600 text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5">
-                            <i class="fa-solid fa-road"></i>
-                        </span>
-                        <p class="text-[12px] font-bold text-slate-600">学校に部活がないから諦めるという選択をなくしたい</p>
-                    </div>
+    <section id="concept" class="py-20 px-8 bg-slate-50">
+      <div class="text-center mb-10">
+        <h2 class="section-title">チーム概要</h2>
+        <p class="text-[10px] font-bold text-slate-400 mt-2 tracking-widest uppercase">Overview</p>
+      </div>
+      <div class="grid grid-cols-1 gap-4 text-sm">
+        <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex items-start space-x-4">
+          <div class="w-10 h-10 shrink-0 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center text-lg">
+            <i class="fa-solid fa-bullseye"></i>
+          </div>
+          <div>
+            <h4 class="font-black text-indigo-600 mb-1">趣旨</h4>
+            <p class="text-xs font-bold text-slate-600 leading-relaxed">児童生徒がハンドボールを継続して親しむ機会を確保し普及を目指します。</p>
+          </div>
+        </div>
+        <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex items-start space-x-4">
+          <div class="w-10 h-10 shrink-0 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center text-lg">
+            <i class="fa-solid fa-handshake-angle"></i>
+          </div>
+          <div>
+            <h4 class="font-black text-purple-600 mb-1">目的</h4>
+            <p class="text-xs font-bold text-slate-600 leading-relaxed">ハンドボールを通した地域社会貢献を追求し必要とされる会社を目指します。</p>
+          </div>
+        </div>
+        <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex items-start space-x-4">
+          <div class="w-10 h-10 shrink-0 bg-pink-50 text-pink-600 rounded-xl flex items-center justify-center text-lg">
+            <i class="fa-solid fa-earth-asia"></i>
+          </div>
+          <div>
+            <h4 class="font-black text-pink-600 mb-1">ビジョン</h4>
+            <p class="text-xs font-bold text-slate-600 leading-relaxed">沖縄全土から選手が集まり永続的に続いていくクラブチームとなります。</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-                    <div class="flex items-start space-x-3">
-                        <span class="bg-purple-600 text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5">
-                            <i class="fa-solid fa-graduation-cap"></i>
-                        </span>
-                        <p class="text-[12px] font-bold text-slate-600">専門的な指導を提供し安全かつ正しい技術を伝えたい</p>
-                    </div>
-
-                    <div class="flex items-start space-x-3">
-                        <span class="bg-pink-600 text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5">
-                            <i class="fa-solid fa-house-chimney"></i>
-                        </span>
-                        <p class="text-[12px] font-bold text-slate-600">学校･家庭･企業が手を取り合い新しい居場所を作りたい</p>
-                    </div>
-                </div>
-
-                <p class="text-[12px] font-bold text-indigo-700 leading-relaxed bg-indigo-50 p-4 rounded-xl text-center">
-                    「うちなーんちゅの旅窓」国際旅行社として<br>子供たちの成長に一生涯伴走します
-                </p>
-            </div>
-        </section>
-
-        <section id="concept" class="py-20 px-8 bg-slate-50">
-            <div class="text-center mb-10">
-                <h2 class="section-title">チーム概要</h2>
-                <p class="text-[10px] font-bold text-slate-400 mt-2 tracking-widest uppercase">Overview</p>
-            </div>
-            
-            <div class="grid grid-cols-1 gap-4 text-sm">
-                <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex items-start space-x-4">
-                    <div class="w-10 h-10 shrink-0 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center text-lg">
-                        <i class="fa-solid fa-bullseye"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-black text-indigo-600 mb-1">趣旨</h4>
-                        <p class="text-xs font-bold text-slate-600 leading-relaxed">児童生徒がハンドボールを継続して親しむ機会を確保し普及を目指します。</p>
-                    </div>
-                </div>
-                <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex items-start space-x-4">
-                    <div class="w-10 h-10 shrink-0 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center text-lg">
-                        <i class="fa-solid fa-handshake-angle"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-black text-purple-600 mb-1">目的</h4>
-                        <p class="text-xs font-bold text-slate-600 leading-relaxed">ハンドボールを通した地域社会貢献を追求し必要とされる会社を目指します。</p>
-                    </div>
-                </div>
-                <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex items-start space-x-4">
-                    <div class="w-10 h-10 shrink-0 bg-pink-50 text-pink-600 rounded-xl flex items-center justify-center text-lg">
-                        <i class="fa-solid fa-earth-asia"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-black text-pink-600 mb-1">ビジョン</h4>
-                        <p class="text-xs font-bold text-slate-600 leading-relaxed">沖縄全土から選手が集まり永続的に続いていくクラブチームとなります。</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-   <section id="staff" class="py-16 px-6 bg-white">
-    <div class="text-center mb-12">
+    <section id="staff" class="py-16 px-6 bg-white">
+      <div class="text-center mb-12">
         <h2 class="section-title">スタッフ紹介</h2>
         <p class="text-[10px] font-bold text-slate-400 mt-2 tracking-widest uppercase">TEAM STAFF</p>
-    </div>
-
-    <div class="staff-card p-8">
+      </div>
+      <div class="staff-card p-8">
         <div class="flex items-center space-x-5 mb-8 pb-8 border-b border-slate-100">
-            <div class="w-20 h-20 shrink-0 brand-gradient rounded-[24px] flex items-center justify-center text-4xl shadow-lg text-white">
-                <i class="fa-solid fa-user"></i>
-            </div>
-            
-            <div class="flex-1">
-                <p class="text-indigo-600 text-[10px] font-black tracking-widest uppercase mb-1">監督</p>
-                <h3 class="text-3xl font-black text-slate-900 tracking-tighter leading-none">新垣 信明</h3>
-                <p class="text-[10px] text-slate-400 font-bold mt-1.5 uppercase tracking-widest">Arakaki Nobuaki</p>
-            </div>
+          <div class="w-20 h-20 shrink-0 brand-gradient rounded-[24px] flex items-center justify-center text-4xl shadow-lg text-white">
+            <i class="fa-solid fa-user"></i>
+          </div>
+          <div class="flex-1">
+            <p class="text-indigo-600 text-[10px] font-black tracking-widest uppercase mb-1">監督</p>
+            <h3 class="text-3xl font-black text-slate-900 tracking-tighter leading-none">新垣 信明</h3>
+            <p class="text-[10px] text-slate-400 font-bold mt-1.5 uppercase tracking-widest">Arakaki Nobuaki</p>
+          </div>
         </div>
-
         <div class="space-y-6">
-            <div>
-                <span class="info-label"><i class="fa-solid fa-briefcase mr-1.5"></i> 所属</span>
-                <div class="info-value mt-1 space-y-1">
-                    <p class="whitespace-nowrap tracking-tighter text-[11px] sm:text-sm">公益財団法人沖縄県スポーツ協会</p>
-                    <p class="whitespace-nowrap tracking-tighter text-[10px] text-slate-500">（国民スポーツ大会・指導者養成事業を担当）</p>
-                </div>
+          <div>
+            <span class="info-label"><i class="fa-solid fa-briefcase mr-1.5"></i> 所属</span>
+            <div class="info-value mt-1 space-y-1">
+              <p class="whitespace-nowrap tracking-tighter text-[11px] sm:text-sm">公益財団法人沖縄県スポーツ協会</p>
+              <p class="whitespace-nowrap tracking-tighter text-[10px] text-slate-500">（国民スポーツ大会・指導者養成事業を担当）</p>
             </div>
-
-            <div>
-                <span class="info-label"><i class="fa-solid fa-graduation-cap mr-1.5"></i> 保有資格</span>
-                <div class="info-value mt-1 space-y-1">
-                    <p class="whitespace-nowrap tracking-tighter text-[10.5px] sm:text-sm">・中学校･高等学校教諭一種免許状（保健体育）</p>
-                    <p class="whitespace-nowrap tracking-tighter text-[11px] sm:text-sm">・日本スポーツ協会公認ハンドボールコーチ3</p>
-                </div>
+          </div>
+          <div>
+            <span class="info-label"><i class="fa-solid fa-graduation-cap mr-1.5"></i> 保有資格</span>
+            <div class="info-value mt-1 space-y-1">
+              <p class="whitespace-nowrap tracking-tighter text-[10.5px] sm:text-sm">・中学校･高等学校教諭一種免許状（保健体育）</p>
+              <p class="whitespace-nowrap tracking-tighter text-[11px] sm:text-sm">・日本スポーツ協会公認ハンドボールコーチ3</p>
             </div>
-
-            <div>
-                <span class="info-label"><i class="fa-solid fa-trophy mr-1.5"></i> 競技歴</span>
-                <div class="space-y-1.5 mt-2">
-                    <p class="history-item whitespace-nowrap tracking-tighter text-[11px] sm:text-sm">松島中学校：沖縄県選抜として全国大会出場</p>
-                    <p class="history-item whitespace-nowrap tracking-tighter text-[11px] sm:text-sm">興南高校：副主将としてインターハイ準優勝、国体選手</p>
-                    <p class="history-item whitespace-nowrap tracking-tighter text-[11px] sm:text-sm">福岡大学：九州リーグ優勝、全日本インカレ出場</p>
-                    <p class="history-item whitespace-nowrap tracking-tighter text-[11px] sm:text-sm">社会人：興南OB「B.I.C」としてジャパンオープン出場</p>
-                    <p class="text-[10px] text-slate-400 font-bold pl-5 italic mt-1">※コロナ禍により現役引退、指導者の道へ</p>
-                </div>
+          </div>
+          <div>
+            <span class="info-label"><i class="fa-solid fa-trophy mr-1.5"></i> 競技歴</span>
+            <div class="space-y-1.5 mt-2">
+              <p class="history-item whitespace-nowrap tracking-tighter text-[11px] sm:text-sm">松島中学校：沖縄県選抜として全国大会出場</p>
+              <p class="history-item whitespace-nowrap tracking-tighter text-[11px] sm:text-sm">興南高校：副主将としてインターハイ準優勝、国体選手</p>
+              <p class="history-item whitespace-nowrap tracking-tighter text-[11px] sm:text-sm">福岡大学：九州リーグ優勝、全日本インカレ出場</p>
+              <p class="history-item whitespace-nowrap tracking-tighter text-[11px] sm:text-sm">社会人：興南OB「B.I.C」としてジャパンオープン出場</p>
+              <p class="text-[10px] text-slate-400 font-bold pl-5 italic mt-1">※コロナ禍により現役引退、指導者の道へ</p>
             </div>
-
-            <div>
-                <span class="info-label"><i class="fa-solid fa-chalkboard-user mr-1.5"></i> 指導歴</span>
-                <div class="info-value mb-0 whitespace-nowrap tracking-tighter text-[11px] sm:text-sm">
-                    天久小HC・松島中学校(男女)の外部コーチとして4年
-                </div>
+          </div>
+          <div>
+            <span class="info-label"><i class="fa-solid fa-chalkboard-user mr-1.5"></i> 指導歴</span>
+            <div class="info-value mb-0 whitespace-nowrap tracking-tighter text-[11px] sm:text-sm">
+              天久小HC・松島中学校(男女)の外部コーチとして4年
             </div>
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
+    <section id="activity" class="py-12 px-8 bg-slate-50">
+      <div class="text-center mb-10">
+        <h2 class="section-title">活動詳細</h2>
+        <p class="text-[10px] font-bold text-slate-400 mt-2 tracking-widest uppercase">Information</p>
+      </div>
+      <div class="space-y-6">
+        <div class="bg-white p-6 rounded-[32px] border border-slate-100 shadow-sm">
+          <h4 class="text-xs font-black text-indigo-600 mb-4 flex items-center">
+            <i class="fa-solid fa-calendar-days mr-2"></i> スケジュール・場所
+          </h4>
+          <div class="schedule-grid">
+            <div class="bg-indigo-50 p-3 rounded-2xl">
+              <p class="text-[9px] font-black text-indigo-400 mb-1">月曜 (月毎に調整)</p>
+              <p class="text-[11px] font-black text-indigo-900">17:30-19:30<br><span class="text-[9px] opacity-70">@天久小学校体育館</span></p>
+            </div>
+            <div class="bg-indigo-50 p-3 rounded-2xl">
+              <p class="text-[9px] font-black text-indigo-400 mb-1">火・金曜</p>
+              <p class="text-[11px] font-black text-indigo-900">17:30-19:30<br><span class="text-[9px] opacity-70">@天久小学校体育館</span></p>
+            </div>
+            <div class="bg-purple-50 p-3 rounded-2xl">
+              <p class="text-[9px] font-black text-purple-400 mb-1">木曜 (月毎に調整)</p>
+              <p class="text-[11px] font-black text-purple-900">18:00-19:30<br><span class="text-[9px] opacity-70">@松島中学校体育館</span></p>
+            </div>
+            <div class="bg-pink-50 p-3 rounded-2xl">
+              <p class="text-[9px] font-black text-pink-400 mb-1">土・日曜</p>
+              <p class="text-[11px] font-black text-pink-900">都度調整</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white p-6 rounded-[32px] border border-slate-100 shadow-sm">
+          <h4 class="text-xs font-black text-indigo-600 mb-4 flex items-center">
+            <i class="fa-solid fa-coins mr-2"></i> 会費について
+          </h4>
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-[11px] font-bold text-slate-400">月額</span>
+            <span class="text-lg font-black text-slate-700">2,000円</span>
+          </div>
+          <p class="text-[10px] text-slate-400 font-bold italic border-t border-slate-50 pt-2 text-right">
+            ※初期登録費用別途あり
+          </p>
+        </div>
+      </div>
+    </section>
 
+    <section class="py-16 px-8 message-image-bg text-white relative">
+      <h3 class="text-xs font-black tracking-[0.2em] uppercase mb-6 flex items-center">
+        <span class="w-8 h-px bg-white/50 mr-3"></span> Message
+      </h3>
+      <h4 class="text-xl font-black mb-8 leading-tight">
+        「指導者」というより、<br>
+        ハンドボールの楽しさを伝える<br>
+        <span class="text-2xl border-b-2 border-white/50 pb-1 inline-block mt-2">地域の理解者「伴走者」</span><br class="block sm:hidden">でありたい。
+      </h4>
+      <div class="space-y-5 text-[13px] font-bold leading-relaxed text-white/95">
+        <p>中学生として「自分で考えて動ける自立心」を育むことを大切にしています。勝ち負けだけにこだわる堅苦しい指導ではなく、生徒たちが自ら目標を見つけ、仲間と協力しながら成長していける環境づくりを目指しています。</p>
+        <p>主役は子どもたちです。選手たちが「どうしたいのか？」を尊重し、主体的に練習に取り組んで欲しいと考えております。</p>
+      </div>
+      <div class="flex justify-end mt-10">
+        <p class="text-sm font-black border-b-2 border-white pb-1 italic">— HC 新垣信明</p>
+      </div>
+    </section>
 
-       <section id="activity" class="py-12 px-8 bg-slate-50">
-            <div class="text-center mb-10">
-                <h2 class="section-title">活動詳細</h2>
-                <p class="text-[10px] font-bold text-slate-400 mt-2 tracking-widest uppercase">Information</p>
-            </div>
+    <section id="instagram" class="py-12 px-8 bg-white text-center">
+      <div class="mb-8">
+        <h2 class="section-title">公式インスタグラム</h2>
+        <p class="text-[10px] font-bold text-slate-400 mt-2 tracking-widest uppercase">Official Instagram</p>
+      </div>
+      <div class="bg-slate-50 rounded-[32px] p-8 border border-slate-100 shadow-sm">
+        <div class="mb-6">
+          <i class="fa-brands fa-instagram text-4xl text-indigo-600"></i>
+        </div>
+        <p class="text-sm font-bold text-slate-600 mb-6 leading-relaxed">
+          日々の練習風景や試合の様子など、<br>
+          チームの最新情報を発信中！
+        </p>
+        <a href="https://www.instagram.com/its_u15_girls/" target="_blank" rel="noopener noreferrer" class="inline-block brand-gradient text-white px-8 py-3 rounded-full text-xs font-black shadow-lg shadow-indigo-200 active:scale-95 transition-transform">
+          Instagramを見る
+        </a>
+      </div>
+    </section>
 
-            <div class="space-y-6">
-                <div class="bg-white p-6 rounded-[32px] border border-slate-100 shadow-sm">
-                    <h4 class="text-xs font-black text-indigo-600 mb-4 flex items-center">
-                        <i class="fa-solid fa-calendar-days mr-2"></i> スケジュール・場所
-                    </h4>
-                    <div class="schedule-grid">
-                        <div class="bg-indigo-50 p-3 rounded-2xl">
-                            <p class="text-[9px] font-black text-indigo-400 mb-1">月曜 (月毎に調整)</p>
-                            <p class="text-[11px] font-black text-indigo-900">17:30-19:30<br><span class="text-[9px] opacity-70">@天久小学校体育館</span></p>
-                        </div>
-                        <div class="bg-indigo-50 p-3 rounded-2xl">
-                            <p class="text-[9px] font-black text-indigo-400 mb-1">火・金曜</p>
-                            <p class="text-[11px] font-black text-indigo-900">17:30-19:30<br><span class="text-[9px] opacity-70">@天久小学校体育館</span></p>
-                        </div>
-                        <div class="bg-purple-50 p-3 rounded-2xl">
-                            <p class="text-[9px] font-black text-purple-400 mb-1">木曜 (月毎に調整)</p>
-                            <p class="text-[11px] font-black text-purple-900">18:00-19:30<br><span class="text-[9px] opacity-70">@松島中学校体育館</span></p>
-                        </div>
-                        <div class="bg-pink-50 p-3 rounded-2xl">
-                            <p class="text-[9px] font-black text-pink-400 mb-1">土・日曜</p>
-                            <p class="text-[11px] font-black text-pink-900">都度調整</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white p-6 rounded-[32px] border border-slate-100 shadow-sm">
-                    <h4 class="text-xs font-black text-indigo-600 mb-4 flex items-center">
-                        <i class="fa-solid fa-coins mr-2"></i> 会費について
-                    </h4>
-                    <div class="flex justify-between items-center mb-2">
-                        <span class="text-[11px] font-bold text-slate-400">月額</span>
-                        <span class="text-lg font-black text-slate-700">2,000円</span>
-                    </div>
-                    <p class="text-[10px] text-slate-400 font-bold italic border-t border-slate-50 pt-2 text-right">
-                        ※初期登録費用別途あり
-                    </p>
-                </div>
-            </div>
-        </section>
-        
-        <section class="py-16 px-8 message-image-bg text-white relative">
-            <h3 class="text-xs font-black tracking-[0.2em] uppercase mb-6 flex items-center">
-                <span class="w-8 h-px bg-white/50 mr-3"></span> Message
-            </h3>
-            
-            <h4 class="text-xl font-black mb-8 leading-tight">
-                「指導者」というより、<br>
-                ハンドボールの楽しさを伝える<br>
-                <span class="text-2xl border-b-2 border-white/50 pb-1 inline-block mt-2">地域の理解者「伴走者」</span><br class="block sm:hidden">でありたい。
-            </h4>
-            
-            <div class="space-y-5 text-[13px] font-bold leading-relaxed text-white/95">
-                <p>中学生として「自分で考えて動ける自立心」を育むことを大切にしています。勝ち負けだけにこだわる堅苦しい指導ではなく、生徒たちが自ら目標を見つけ、仲間と協力しながら成長していける環境づくりを目指しています。</p>
-                <p>主役は子どもたちです。選手たちが「どうしたいのか？」を尊重し、主体的に練習に取り組んで欲しいと考えております。</p>
-            </div>
-            
-            <div class="flex justify-end mt-10">
-                <p class="text-sm font-black border-b-2 border-white pb-1 italic">— HC 新垣信明</p>
-            </div>
-        </section>
-
-     <section id="instagram" class="py-12 px-8 bg-white text-center">
-            <div class="mb-8">
-                <h2 class="section-title">公式インスタグラム</h2>
-                <p class="text-[10px] font-bold text-slate-400 mt-2 tracking-widest uppercase">Official Instagram</p>
-            </div>
-            
-            <div class="bg-slate-50 rounded-[32px] p-8 border border-slate-100 shadow-sm">
-                <div class="mb-6">
-                    <i class="fa-brands fa-instagram text-4xl text-indigo-600"></i>
-                </div>
-                <p class="text-sm font-bold text-slate-600 mb-6 leading-relaxed">
-                    日々の練習風景や試合の様子など、<br>
-                    チームの最新情報を発信中！
-                </p>
-                <a href="https://www.instagram.com/its_u15_girls/" target="_blank" rel="noopener noreferrer" class="inline-block brand-gradient text-white px-8 py-3 rounded-full text-xs font-black shadow-lg shadow-indigo-200 active:scale-95 transition-transform">
-                    Instagramを見る
-                </a>
-            </div>
-        </section>
-    
-<section id="partner" class="py-12 px-8 bg-slate-50">
-    <div class="text-center mb-10">
+    <section id="partner" class="py-12 px-8 bg-slate-50">
+      <div class="text-center mb-10">
         <h2 class="section-title">オフィシャルパートナー</h2>
         <p class="text-[10px] font-bold text-slate-400 mt-2 tracking-widest uppercase">Official Partner</p>
-    </div>
-    
-    <div class="max-w-xl mx-auto">
+      </div>
+      <div class="max-w-xl mx-auto">
         <div class="grid grid-cols-2 gap-4">
-            <div data-href="https://diningshin-okinawa.owst.jp/" class="partner-link aspect-[2/1] bg-white rounded-md shadow-sm border border-slate-200 flex items-center justify-center p-2 cursor-pointer transition-all duration-300">
-                <img src="01_shin.png" alt="ダイニングキッチン SHIN" class="max-h-full max-w-full object-contain">
-            </div>
-
-            <div data-href="https://www.3chikuju.com/%E5%BA%97%E8%88%97%E4%B8%80%E8%A6%A7/%E5%94%90%E6%8F%9A%E3%81%92%E5%B0%82%E9%96%80-%E3%81%9F%E3%81%91%E7%94%B0%E5%95%86%E5%BA%97" class="partner-link aspect-[2/1] bg-white rounded-md shadow-sm border border-slate-200 flex items-center justify-center p-2 cursor-pointer transition-all duration-300">
-                <img src="02_takeda.png" alt="たけ田商店" class="max-h-full max-w-full object-contain">
-            </div>
-
-            <div data-href="https://www.k-shien.com/" class="partner-link aspect-[2/1] bg-white rounded-md shadow-sm border border-slate-200 flex items-center justify-center p-2 cursor-pointer transition-all duration-300">
-                <img src="03_keiei.png" alt="経営支援センター" class="max-h-full max-w-full object-contain">
-            </div>
-
-            <div data-href="https://isiden.jp/" class="partner-link aspect-[2/1] bg-white rounded-md shadow-sm border border-slate-200 flex items-center justify-center p-2 cursor-pointer transition-all duration-300">
-                <img src="04_ishikawa.png" alt="石川電気" class="max-h-full max-w-full object-contain">
-            </div>
-
-            <div data-href="https://www.s-coast.jp/" class="partner-link aspect-[2/1] bg-white rounded-md shadow-sm border border-slate-200 flex items-center justify-center p-2 cursor-pointer transition-all duration-300">
-                <img src="05_sausukosuto.png" alt="サウスコースト" class="max-h-full max-w-full object-contain">
-            </div>
-
-            <div data-href="https://www.kokuba-hifuka.com/" class="partner-link aspect-[2/1] bg-white rounded-md shadow-sm border border-slate-200 flex items-center justify-center p-2 cursor-pointer transition-all duration-300">
-                <img src="06_kokuba.png" alt="こくば皮膚科" class="max-h-full max-w-full object-contain">
-            </div>
+          <div data-href="https://diningshin-okinawa.owst.jp/" class="partner-link aspect-[2/1] bg-white rounded-md shadow-sm border border-slate-200 flex items-center justify-center p-2 cursor-pointer">
+            <img src="01_shin.png" alt="ダイニングキッチン SHIN" class="max-h-full max-w-full object-contain">
+          </div>
+          <div data-href="https://www.3chikuju.com/%E5%BA%97%E8%88%97%E4%B8%80%E8%A6%A7/%E5%94%90%E6%8F%9A%E3%81%92%E5%B0%82%E9%96%80-%E3%81%9F%E3%81%91%E7%94%B0%E5%95%86%E5%BA%97" class="partner-link aspect-[2/1] bg-white rounded-md shadow-sm border border-slate-200 flex items-center justify-center p-2 cursor-pointer">
+            <img src="02_takeda.png" alt="たけ田商店" class="max-h-full max-w-full object-contain">
+          </div>
+          <div data-href="https://www.k-shien.com/" class="partner-link aspect-[2/1] bg-white rounded-md shadow-sm border border-slate-200 flex items-center justify-center p-2 cursor-pointer">
+            <img src="03_keiei.png" alt="経営支援センター" class="max-h-full max-w-full object-contain">
+          </div>
+          <div data-href="https://isiden.jp/" class="partner-link aspect-[2/1] bg-white rounded-md shadow-sm border border-slate-200 flex items-center justify-center p-2 cursor-pointer">
+            <img src="04_ishikawa.png" alt="石川電気" class="max-h-full max-w-full object-contain">
+          </div>
+          <div data-href="https://www.s-coast.jp/" class="partner-link aspect-[2/1] bg-white rounded-md shadow-sm border border-slate-200 flex items-center justify-center p-2 cursor-pointer">
+            <img src="05_sausukosuto.png" alt="サウスコースト" class="max-h-full max-w-full object-contain">
+          </div>
+          <div data-href="https://www.kokuba-hifuka.com/" class="partner-link aspect-[2/1] bg-white rounded-md shadow-sm border border-slate-200 flex items-center justify-center p-2 cursor-pointer">
+            <img src="06_kokuba.png" alt="こくば皮膚科" class="max-h-full max-w-full object-contain">
+          </div>
         </div>
-
         <div class="text-center pt-10">
-            <a href="https://its1.jp/2026/03/04/its-u-15%e3%81%b8%e3%81%ae%e5%8d%94%e8%b3%9b%e9%87%91%e3%81%ae%e3%81%8a%e9%a1%98%e3%81%84/" 
-               target="_blank" rel="noopener noreferrer" 
-               class="inline-block border-2 border-indigo-600 text-indigo-600 px-8 py-3 rounded-full text-xs font-black active:scale-95 transition-transform hover:bg-indigo-50">
-                パートナー募集について
-            </a>
+          <a href="https://its1.jp/2026/03/04/its-u-15%e3%81%b8%e3%81%ae%e5%8d%94%e8%b3%9b%e9%87%91%e3%81%ae%e3%81%8a%e9%a1%98%e3%81%84/" target="_blank" rel="noopener noreferrer" class="inline-block border-2 border-indigo-600 text-indigo-600 px-8 py-3 rounded-full text-xs font-black active:scale-95 transition-transform hover:bg-indigo-50">
+            パートナー募集について
+          </a>
         </div>
-        
         <p class="text-[10px] text-center text-slate-400 font-bold mt-8">
-            ITS U-15は、地域の皆様に支えられています。
+          ITS U-15は、地域の皆様に支えられています。
         </p>
-    </div>
-</section>
-        
-        <section id="contact" class="contact-image-bg py-16 px-8 text-white text-center rounded-t-[50px] relative">
-            <div class="relative z-10 max-w-sm mx-auto">
-                <h2 class="text-3xl font-black mb-2 uppercase tracking-tighter italic">Contact</h2>
-                <p class="text-xs font-medium opacity-90 mb-8 drop-shadow-md">
-                    体験入部・見学・ご質問など<br>
-                    お気軽にご連絡ください。
-                </p>
+      </div>
+    </section>
 
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeT-XyZmLYG5bYKveuqcHkIbUauHzWMVImY81dHUm8a_jYggQ/viewform" 
-                   target="_blank" rel="noopener noreferrer"
-                   class="block w-full bg-white text-indigo-600 font-black py-5 rounded-2xl text-lg shadow-2xl active:scale-95 transition-transform">
-                    体験・見学を申し込む
-                </a>
+    <section id="contact" class="contact-image-bg py-16 px-8 text-white text-center rounded-t-[50px] relative">
+      <div class="relative z-10 max-w-sm mx-auto">
+        <h2 class="text-3xl font-black mb-2 uppercase tracking-tighter italic">Contact</h2>
+        <p class="text-xs font-medium opacity-90 mb-8 drop-shadow-md">
+          体験入部・見学・ご質問など<br>
+          お気軽にご連絡ください。
+        </p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeT-XyZmLYG5bYKveuqcHkIbUauHzWMVImY81dHUm8a_jYggQ/viewform" target="_blank" rel="noopener noreferrer" class="block w-full bg-white text-indigo-600 font-black py-5 rounded-2xl text-lg shadow-2xl active:scale-95 transition-transform">
+          体験・見学を申し込む
+        </a>
+        <div class="mt-12 border-t border-white/10 pt-8">
+          <div class="opacity-40 mb-4">
+            <p class="text-[9px] font-black tracking-[0.4em] uppercase">ITS U-15 Handball Club</p>
+          </div>
+          <div class="inline-block bg-white/5 border border-white/10 p-4 rounded-2xl text-left w-full">
+            <p class="text-[8px] font-black text-indigo-400 uppercase mb-1">Operating Company</p>
+            <p class="text-xs font-black text-white mb-3">株式会社 国際旅行社</p>
+            <a href="https://its1.jp/" target="_blank" class="flex items-center justify-center w-full bg-white text-indigo-900 py-2.5 rounded-xl text-[10px] font-black">
+              企業公式サイトを表示 <i class="fa-solid fa-arrow-up-right-from-square text-[7px] ml-2"></i>
+            </a>
+          </div>
+          <p class="text-[9px] text-white/20 mt-8">© 2026 International Travel Service Inc.</p>
+        </div>
+      </div>
+    </section>
+  </main>
 
-                <div class="mt-12 border-t border-white/10 pt-8">
-                    <div class="opacity-40 mb-4">
-                        <p class="text-[9px] font-black tracking-[0.4em] uppercase">ITS U-15 Handball Club</p>
-                    </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // メニュー制御
+      const menuBtn = document.getElementById('menu-btn');
+      const closeBtn = document.getElementById('close-btn');
+      const overlay = document.getElementById('menu-overlay');
+      const menuLinks = document.querySelectorAll('.menu-link');
 
-                    <div class="inline-block bg-white/5 border border-white/10 p-4 rounded-2xl text-left w-full">
-                        <p class="text-[8px] font-black text-indigo-400 uppercase mb-1">Operating Company</p>
-                        <p class="text-xs font-black text-white mb-3">株式会社 国際旅行社</p>
-                        <a href="https://its1.jp/" target="_blank" class="flex items-center justify-center w-full bg-white text-indigo-900 py-2.5 rounded-xl text-[10px] font-black">
-                            企業公式サイトを表示 <i class="fa-solid fa-arrow-up-right-from-square text-[7px] ml-2"></i>
-                        </a>
-                    </div>
-                    
-                    <p class="text-[9px] text-white/20 mt-8">© 2026 International Travel Service Inc.</p>
-                </div>
-            </div>
-        </section>
+      const openMenu = () => overlay.classList.remove('opacity-0', 'pointer-events-none');
+      const closeMenu = () => overlay.classList.add('opacity-0', 'pointer-events-none');
 
-    </div>
-    <script>
-        // --- 既存のメニュー制御などのスクリプト ---
-        const menuBtn = document.getElementById('menu-btn');
-        const closeBtn = document.getElementById('close-btn');
-        const overlay = document.getElementById('menu-overlay');
-        const menuLinks = document.querySelectorAll('.menu-link');
+      menuBtn.addEventListener('click', openMenu);
+      closeBtn.addEventListener('click', closeMenu);
+      menuLinks.forEach(link => link.addEventListener('click', closeMenu));
 
-        menuBtn.addEventListener('click', () => {
-            overlay.classList.remove('opacity-0', 'pointer-events-none');
+      // スクロール監視（タイトルアニメーション）
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.2
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-active');
+          }
         });
+      }, observerOptions);
 
-        const closeMenu = () => {
-            overlay.classList.add('opacity-0', 'pointer-events-none');
-        };
+      document.querySelectorAll('.section-title').forEach(title => {
+        observer.observe(title);
+      });
 
-        closeBtn.addEventListener('click', closeMenu);
-        menuLinks.forEach(link => {
-            link.addEventListener('click', closeMenu);
+      // パートナーロゴ（2回タップ制御）
+      const partnerLinks = document.querySelectorAll('.partner-link');
+
+      partnerLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          if (this.classList.contains('is-selected')) {
+            const url = this.getAttribute('data-href');
+            if (url) {
+              window.open(url, '_blank', 'noopener,noreferrer');
+              this.classList.remove('is-selected');
+            }
+          } else {
+            partnerLinks.forEach(l => l.classList.remove('is-selected'));
+            this.classList.add('is-selected');
+            e.stopPropagation();
+          }
         });
+      });
 
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.2
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-active');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.section-title').forEach(title => {
-            observer.observe(title);
-        });
-
-        // --- 今回追加したパートナーロゴの制御（2回タップ） ---
-        document.addEventListener('DOMContentLoaded', () => {
-            const partnerLinks = document.querySelectorAll('.partner-link');
-
-            partnerLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    // すでに浮いている（1回タップ済み）ならリンクを開く
-                    if (this.classList.contains('is-selected')) {
-                        const url = this.getAttribute('data-href');
-                        if (url) {
-                            window.open(url, '_blank', 'noopener,noreferrer');
-                            this.classList.remove('is-selected');
-                        }
-                    } else {
-                        // 他のロゴの浮上を解除して、これだけを浮かせる
-                        partnerLinks.forEach(l => l.classList.remove('is-selected'));
-                        this.classList.add('is-selected');
-                        e.stopPropagation(); // 背景クリック判定に邪魔されないようにする
-                    }
-                });
-            });
-
-            // ロゴ以外の場所をタップしたら浮上を解除する
-            document.addEventListener('click', () => {
-                partnerLinks.forEach(l => l.classList.remove('is-selected'));
-            });
-        });
-    </script>
+      document.addEventListener('click', () => {
+        partnerLinks.forEach(l => l.classList.remove('is-selected'));
+      });
+    });
+  </script>
 </body>
 </html>
