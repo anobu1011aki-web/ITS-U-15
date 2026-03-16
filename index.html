@@ -127,6 +127,13 @@
 .delay-1 { animation-delay: 0.6s; }
 .delay-1-5 { animation-delay: 0.75s; }
 .delay-2 { animation-delay: 1.2s; }
+}
+        .partner-link.is-selected {
+    transform: translateY(-8px); /* 少し高めに浮かせます */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    border-color: #6366f1; /* 枠線を青くして「選択中」を強調 */
+    z-index: 10;
+}
     </style>
 </head>
 <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
@@ -417,31 +424,29 @@
     
     <div class="max-w-xl mx-auto">
         <div class="grid grid-cols-2 gap-4">
-            
-            <a href="https://diningshin-okinawa.owst.jp/" target="_blank" rel="noopener noreferrer" class="aspect-[2/1] bg-white rounded-md shadow-sm border border-slate-200 flex items-center justify-center p-2">
+            <div data-href="https://diningshin-okinawa.owst.jp/" class="partner-link aspect-[2/1] bg-white rounded-md shadow-sm border border-slate-200 flex items-center justify-center p-2 cursor-pointer transition-all duration-300">
                 <img src="01_shin.png" alt="ダイニングキッチン SHIN" class="max-h-full max-w-full object-contain">
-            </a>
+            </div>
 
-            <a href="https://www.3chikuju.com/%E5%BA%97%E8%88%97%E4%B8%80%E8%A6%A7/%E5%94%90%E6%8F%9A%E3%81%92%E5%B0%82%E9%96%80-%E3%81%9F%E3%81%91%E7%94%B0%E5%95%86%E5%BA%97" target="_blank" rel="noopener noreferrer" class="aspect-[2/1] bg-white rounded-md shadow-sm border border-slate-200 flex items-center justify-center p-2">
+            <div data-href="https://www.3chikuju.com/%E5%BA%97%E8%88%97%E4%B8%80%E8%A6%A7/%E5%94%90%E6%8F%9A%E3%81%92%E5%B0%82%E9%96%80-%E3%81%9F%E3%81%91%E7%94%B0%E5%95%86%E5%BA%97" class="partner-link aspect-[2/1] bg-white rounded-md shadow-sm border border-slate-200 flex items-center justify-center p-2 cursor-pointer transition-all duration-300">
                 <img src="02_takeda.png" alt="たけ田商店" class="max-h-full max-w-full object-contain">
-            </a>
+            </div>
 
-            <a href="https://www.k-shien.com/" target="_blank" rel="noopener noreferrer" class="aspect-[2/1] bg-white rounded-md shadow-sm border border-slate-200 flex items-center justify-center p-2">
+            <div data-href="https://www.k-shien.com/" class="partner-link aspect-[2/1] bg-white rounded-md shadow-sm border border-slate-200 flex items-center justify-center p-2 cursor-pointer transition-all duration-300">
                 <img src="03_keiei.png" alt="経営支援センター" class="max-h-full max-w-full object-contain">
-            </a>
+            </div>
 
-            <a href="https://isiden.jp/" target="_blank" rel="noopener noreferrer" class="aspect-[2/1] bg-white rounded-md shadow-sm border border-slate-200 flex items-center justify-center p-2">
+            <div data-href="https://isiden.jp/" class="partner-link aspect-[2/1] bg-white rounded-md shadow-sm border border-slate-200 flex items-center justify-center p-2 cursor-pointer transition-all duration-300">
                 <img src="04_ishikawa.png" alt="石川電気" class="max-h-full max-w-full object-contain">
-            </a>
+            </div>
 
-            <a href="https://www.s-coast.jp/" target="_blank" rel="noopener noreferrer" class="aspect-[2/1] bg-white rounded-md shadow-sm border border-slate-200 flex items-center justify-center p-2">
+            <div data-href="https://www.s-coast.jp/" class="partner-link aspect-[2/1] bg-white rounded-md shadow-sm border border-slate-200 flex items-center justify-center p-2 cursor-pointer transition-all duration-300">
                 <img src="05_sausukosuto.png" alt="サウスコースト" class="max-h-full max-w-full object-contain">
-            </a>
+            </div>
 
-            <a href="https://www.kokuba-hifuka.com/" target="_blank" rel="noopener noreferrer" class="aspect-[2/1] bg-white rounded-md shadow-sm border border-slate-200 flex items-center justify-center p-2">
+            <div data-href="https://www.kokuba-hifuka.com/" class="partner-link aspect-[2/1] bg-white rounded-md shadow-sm border border-slate-200 flex items-center justify-center p-2 cursor-pointer transition-all duration-300">
                 <img src="06_kokuba.png" alt="こくば皮膚科" class="max-h-full max-w-full object-contain">
-            </a>
-
+            </div>
         </div>
 
         <div class="text-center pt-10">
@@ -527,5 +532,29 @@
             observer.observe(title);
         });
     </script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const partnerLinks = document.querySelectorAll('.partner-link');
+
+    partnerLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            // すでに浮いている（1回タップ済み）ならリンクを開く
+            if (this.classList.contains('is-selected')) {
+                const url = this.getAttribute('data-href');
+                window.open(url, '_blank', 'noopener,noreferrer');
+                this.classList.remove('is-selected'); // 戻った時のためにリセット
+            } else {
+                // 他のロゴの浮上を解除して、これだけを浮かせる
+                partnerLinks.forEach(l => l.classList.remove('is-selected'));
+                this.classList.add('is-selected');
+                e.stopPropagation(); // 背景クリック判定に邪魔されないようにする
+            }
+        });
+    });
+
+    // ロゴ以外の場所をタップしたら浮上を解除する
+    document.addEventListener('click', () => {
+        partnerLinks.forEach(l => l.classList.remove('is-selected'));
+    });
+});
     </body>
 </html>
