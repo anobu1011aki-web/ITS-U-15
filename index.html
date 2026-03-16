@@ -684,11 +684,21 @@ document.getElementById('back-to-top').addEventListener('click', function() {
     behavior: 'smooth'
   });
 });
+      const backToTop = document.getElementById('back-to-top');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+          backToTop.classList.add('show');
+        } else {
+          backToTop.classList.remove('show');
+        }
+      });
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
 
   </script>
-  <button id="back-to-top" class="back-to-top-btn" aria-label="トップへ戻る">
-  <i class="fa-solid fa-chevron-up"></i>
-</button>
-
 </body>
 </html>
