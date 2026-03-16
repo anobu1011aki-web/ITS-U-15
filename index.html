@@ -124,7 +124,7 @@
     }
 
     /* =========================================
-       パートナー枠のUX改善 (ホバー＆タップ)
+       パートナー枠のUX改善
     ========================================= */
     #partner .partner-link {
       position: relative;
@@ -217,7 +217,6 @@
     .delay-1-5 { animation-delay: 0.75s; }
     .delay-2 { animation-delay: 1.2s; }
 
-    /* --- 新規追加: スクロールフェードアップ --- */
     .fade-up {
       opacity: 0;
       transform: translateY(40px);
@@ -228,45 +227,41 @@
       transform: translateY(0);
     }
     
-    /* 複数要素をずらして表示するための遅延クラス */
     .delay-100 { transition-delay: 0.1s; }
     .delay-200 { transition-delay: 0.2s; }
     .delay-300 { transition-delay: 0.3s; }
     .delay-400 { transition-delay: 0.4s; }
+
+    /* トップへ戻るボタンのスタイル */
+    .back-to-top-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 9999;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
     }
-    /* 2. CSS: ボタンの見た目と位置（右下固定） */
-.back-to-top-btn {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: none;
-  background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%); /* ブランド色 */
-  color: white;
-  font-size: 20px;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  z-index: 9999;
-  
-  /* 最初は隠しておく設定 */
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(20px);
-  transition: all 0.3s ease;
-}
 
-/* スクロールした時に付与するクラス */
-.back-to-top-btn.is-visible {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
+    .back-to-top-btn.is-visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
 
-.back-to-top-btn:hover {
-  transform: scale(1.1);
-}
+    .back-to-top-btn:hover {
+      transform: scale(1.1);
+    }
   </style>
 </head>
 
@@ -297,11 +292,6 @@
   </div>
 
   <main>
-  <button id="back-to-top" class="back-to-top-btn" aria-label="トップへ戻る">
-    <i class="fa-solid fa-chevron-up"></i>
-  </button>
-  <script>
-
     <header class="hero-image-bg relative w-full min-h-[80vh] flex items-center justify-center px-8 text-center text-white">
       <div class="relative z-10 py-12">
         <div class="inline-block bg-[#ec4899]/90 text-[10px] font-black px-4 py-1 rounded-full tracking-[0.2em] mb-4 border border-white/30 backdrop-blur-sm">
@@ -613,7 +603,11 @@
     </section>
   </main>
 
-    <script>
+  <button id="back-to-top" class="back-to-top-btn" aria-label="トップへ戻る">
+    <i class="fa-solid fa-chevron-up"></i>
+  </button>
+
+  <script>
     document.addEventListener('DOMContentLoaded', () => {
       // --- メニュー制御 ---
       const menuBtn = document.getElementById('menu-btn');
