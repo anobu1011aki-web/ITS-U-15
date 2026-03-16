@@ -497,6 +497,7 @@
 
     </div>
     <script>
+        // --- 既存のメニュー制御などのスクリプト ---
         const menuBtn = document.getElementById('menu-btn');
         const closeBtn = document.getElementById('close-btn');
         const overlay = document.getElementById('menu-overlay');
@@ -514,10 +515,11 @@
         menuLinks.forEach(link => {
             link.addEventListener('click', closeMenu);
         });
+
         const observerOptions = {
             root: null,
             rootMargin: '0px',
-            threshold: 0.2 // 20%見えたら実行
+            threshold: 0.2
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -531,30 +533,34 @@
         document.querySelectorAll('.section-title').forEach(title => {
             observer.observe(title);
         });
-    </script>
-    document.addEventListener('DOMContentLoaded', () => {
-    const partnerLinks = document.querySelectorAll('.partner-link');
 
-    partnerLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            // すでに浮いている（1回タップ済み）ならリンクを開く
-            if (this.classList.contains('is-selected')) {
-                const url = this.getAttribute('data-href');
-                window.open(url, '_blank', 'noopener,noreferrer');
-                this.classList.remove('is-selected'); // 戻った時のためにリセット
-            } else {
-                // 他のロゴの浮上を解除して、これだけを浮かせる
+        // --- 今回追加したパートナーロゴの制御（2回タップ） ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const partnerLinks = document.querySelectorAll('.partner-link');
+
+            partnerLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // すでに浮いている（1回タップ済み）ならリンクを開く
+                    if (this.classList.contains('is-selected')) {
+                        const url = this.getAttribute('data-href');
+                        if (url) {
+                            window.open(url, '_blank', 'noopener,noreferrer');
+                            this.classList.remove('is-selected');
+                        }
+                    } else {
+                        // 他のロゴの浮上を解除して、これだけを浮かせる
+                        partnerLinks.forEach(l => l.classList.remove('is-selected'));
+                        this.classList.add('is-selected');
+                        e.stopPropagation(); // 背景クリック判定に邪魔されないようにする
+                    }
+                });
+            });
+
+            // ロゴ以外の場所をタップしたら浮上を解除する
+            document.addEventListener('click', () => {
                 partnerLinks.forEach(l => l.classList.remove('is-selected'));
-                this.classList.add('is-selected');
-                e.stopPropagation(); // 背景クリック判定に邪魔されないようにする
-            }
+            });
         });
-    });
-
-    // ロゴ以外の場所をタップしたら浮上を解除する
-    document.addEventListener('click', () => {
-        partnerLinks.forEach(l => l.classList.remove('is-selected'));
-    });
-});
-    </body>
+    </script>
+</body>
 </html>
