@@ -170,6 +170,15 @@
 #partner .partner-link img {
     transition: transform 0.3s ease;
 }
+    @keyframes pulse-white {
+    0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
+    70% { box-shadow: 0 0 0 20px rgba(255, 255, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+}
+
+.btn-pulse {
+    animation: pulse-white 2s infinite;
+}
 
     /* テキストアニメーション */
     @keyframes revealText {
@@ -506,12 +515,15 @@
     </div>
 </section>
 
-    <section id="contact" class="contact-image-bg py-16 px-8 text-white text-center rounded-t-[50px] relative">
-      <div class="relative z-10 max-w-sm mx-auto">
-        <h2 class="text-3xl font-black mb-2 uppercase tracking-tighter italic">Contact</h2>
-        <p class="text-xs font-medium opacity-90 mb-8 drop-shadow-md">
-          体験入部・見学・ご質問など<br>
-          お気軽にご連絡ください。
+    <section id="contact" class="contact-image-bg py-20 px-8 text-white text-center rounded-t-[50px] relative">
+    <div class="relative z-10 max-w-sm mx-auto">
+        <div class="inline-block bg-white/10 backdrop-blur-md border border-white/20 px-4 py-1 rounded-full text-[9px] font-black tracking-[0.2em] mb-4">
+            JOIN US!
+        </div>
+        <h2 class="text-4xl font-black mb-4 uppercase tracking-tighter italic drop-shadow-lg">Contact</h2>
+        <p class="text-xs font-bold opacity-90 mb-10 leading-relaxed">
+            体験入部・見学・ご質問など<br>
+            お気軽にご連絡ください。
         </p>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSeT-XyZmLYG5bYKveuqcHkIbUauHzWMVImY81dHUm8a_jYggQ/viewform" target="_blank" rel="noopener noreferrer" class="block w-full bg-white text-indigo-600 font-black py-5 rounded-2xl text-lg shadow-2xl active:scale-95 transition-transform">
           体験・見学を申し込む
