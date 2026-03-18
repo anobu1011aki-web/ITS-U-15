@@ -113,23 +113,27 @@
       margin-bottom: 16px;
     }
 
-    .history-item {
-      position: relative;
-      padding-left: 1.25rem;
-      margin-bottom: 8px;
-      font-size: 12px;
-      font-weight: 700;
-      color: #475569;
-    }
+    /* 競技歴のドット位置とバランスの修正 */
+.history-item {
+  position: relative;
+  padding-left: 1.2rem; /* 左側の余白を少し広げてバランス調整 */
+  margin-bottom: 10px;  /* 項目間の余白を調整 */
+  font-size: 13px;
+  font-weight: 700;
+  color: #475569;
+  line-height: 1.5;     /* 行間を整えて読みやすく */
+}
 
-    .history-item::before {
-      content: '■';
-      position: absolute;
-      left: 0;
-      color: #6366f1;
-      font-size: 10px;
-      top: 2px;
-    }
+.history-item::before {
+  content: '・';        /* 記号を中黒に変更 */
+  position: absolute;
+  left: 0;
+  top: 0;              /* テキストの1行目と高さを合わせる */
+  color: #6366f1;      /* アイコンと同じブランドカラー */
+  font-size: 18px;     /* ドットの視認性を高めるサイズ */
+  font-weight: 900;
+  line-height: 1;
+}
 
     .schedule-grid {
       display: grid;
@@ -437,11 +441,11 @@
 
           <div>
             <span class="info-label"><i class="fa-solid fa-trophy mr-1.5"></i> 競技歴</span>
-            <div class="grid md:grid-cols-2 gap-x-8 gap-y-2 mt-2">
-              <p class="history-item text-xs md:text-sm">松島中学校：沖縄県選抜として全国大会出場</p>
-              <p class="history-item text-xs md:text-sm">興南高校：副主将としてインターハイ準優勝、国体選手</p>
-              <p class="history-item text-xs md:text-sm">福岡大学：九州リーグ優勝、全日本インカレ出場</p>
-              <p class="history-item text-xs md:text-sm">社会人：興南OB「B.I.C」としてジャパンオープン出場</p>
+            <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-1 mt-2">
+              <p class="history-item">松島中学校：沖縄県選抜として全国大会出場</p>
+              <p class="history-item">興南高校：副主将としてインターハイ準優勝、国体選手</p>
+              <p class="history-item">福岡大学：九州リーグ優勝、全日本インカレ出場</p>
+              <p class="history-item">社会人：興南OB「B.I.C」としてジャパンオープン出場</p>
             </div>
             <p class="text-[11px] text-slate-400 font-bold pl-5 italic mt-3">※コロナ禍により現役引退、指導者の道へ</p>
           </div>
