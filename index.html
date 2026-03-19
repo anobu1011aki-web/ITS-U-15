@@ -131,8 +131,7 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 0.5rem;
     }
-
-    /* =========================================
+/* =========================================
        パートナー枠のUX改善
     ========================================= */
     #partner .partner-link {
@@ -163,8 +162,10 @@
       pointer-events: none;
       letter-spacing: 0.05em;
     }
+
+    /* リンクがない経営支援センターのみ「サイトを表示」を非表示にする */
     #partner div.partner-link::after { display: none !important; }
-    }
+
     #partner .partner-link img {
       transition: transform 0.3s ease;
     }
