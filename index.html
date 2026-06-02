@@ -131,10 +131,11 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 0.5rem;
     }
-/* =========================================
-       パートナー枠のUX改善
+    
+    /* =========================================
+       パートナー枠のUX改善（共通化）
     ========================================= */
-    #partner .partner-link {
+    .partner-link {
       position: relative;
       overflow: hidden;
       display: flex;
@@ -144,7 +145,7 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    #partner .partner-link::after {
+    .partner-link::after {
       content: 'サイトを表示 \f08e';
       font-family: 'Noto Sans JP', 'Font Awesome 6 Free';
       font-weight: 900;
@@ -163,36 +164,36 @@
       letter-spacing: 0.05em;
     }
 
-    /* リンクがない経営支援センターのみ「サイトを表示」を非表示にする */
-    #partner div.partner-link::after { display: none !important; }
+    /* リンクがない場合は「サイトを表示」を非表示にする */
+    div.partner-link::after { display: none !important; }
 
-    #partner .partner-link img {
+    .partner-link img {
       transition: transform 0.3s ease;
     }
 
     @media (hover: hover) and (pointer: fine) {
-      #partner .partner-link:hover {
+      .partner-link:hover {
         transform: translateY(-5px);
         box-shadow: 0 10px 20px rgba(99, 102, 241, 0.15);
         border-color: #6366f1;
       }
-      #partner .partner-link:hover::after {
+      .partner-link:hover::after {
         transform: translateY(0);
       }
-      #partner .partner-link:hover img {
+      .partner-link:hover img {
         transform: translateY(-10px) scale(0.85);
       }
     }
 
-    #partner .partner-link.is-selected {
+    .partner-link.is-selected {
       transform: translateY(-5px);
       box-shadow: 0 10px 20px rgba(99, 102, 241, 0.15);
       border-color: #6366f1;
     }
-    #partner .partner-link.is-selected::after {
+    .partner-link.is-selected::after {
       transform: translateY(0);
     }
-    #partner .partner-link.is-selected img {
+    .partner-link.is-selected img {
       transform: translateY(-10px) scale(0.85);
     }
 
@@ -493,21 +494,23 @@
       </div>
       <div class="max-w-xl mx-auto">
         <div class="grid grid-cols-2 gap-4">
-  <a href="https://diningshin-okinawa.owst.jp/" target="_blank" rel="noopener noreferrer" class="partner-link aspect-[2/1] bg-white rounded-xl shadow-sm border border-slate-200 p-2 fade-up delay-100"><img src="01_shin.png" alt="ダイニングキッチン SHIN" class="max-h-full max-w-full object-contain"></a>
-  <a href="https://www.3chikuju.com/%E5%BA%97%E8%88%97%E4%B8%80%E8%A6%A7/%E5%94%90%E6%8F%9A%E3%81%92%E5%B0%82%E9%96%80-%E3%81%9F%E3%81%91%E7%94%B0%E5%95%86%E5%BA%97" target="_blank" rel="noopener noreferrer" class="partner-link aspect-[2/1] bg-white rounded-xl shadow-sm border border-slate-200 p-2 fade-up delay-200"><img src="02_takeda.png" alt="たけ田商店" class="max-h-full max-w-full object-contain"></a>
-  
-  <div class="partner-link aspect-[2/1] bg-white rounded-xl shadow-sm border border-slate-200 p-2 fade-up delay-300">
-    <img src="03_keiei.png" alt="経営支援センター" class="max-h-full max-w-full object-contain">
-  </div>
-  
-  <a href="https://isiden.jp/" target="_blank" rel="noopener noreferrer" class="partner-link aspect-[2/1] bg-white rounded-xl shadow-sm border border-slate-200 p-2 fade-up delay-400"><img src="04_ishikawa.png" alt="石川電気" class="max-h-full max-w-full object-contain"></a>
-  <a href="https://www.s-coast.jp/" target="_blank" rel="noopener noreferrer" class="partner-link aspect-[2/1] bg-white rounded-xl shadow-sm border border-slate-200 p-2 fade-up delay-100"><img src="05_sausukosuto.png" alt="サウスコースト" class="max-h-full max-w-full object-contain"></a>
-  <a href="https://www.kokuba-hifuka.com/" target="_blank" rel="noopener noreferrer" class="partner-link aspect-[2/1] bg-white rounded-xl shadow-sm border border-slate-200 p-2 fade-up delay-200"><img src="06_kokuba.png" alt="こくば皮膚科" class="max-h-full max-w-full object-contain"></a>
-</div>
+          <a href="https://diningshin-okinawa.owst.jp/" target="_blank" rel="noopener noreferrer" class="partner-link aspect-[2/1] bg-white rounded-xl shadow-sm border border-slate-200 p-2 fade-up delay-100"><img src="01_shin.png" alt="ダイニングキッチン SHIN" class="max-h-full max-w-full object-contain"></a>
+          <a href="https://www.3chikuju.com/%E5%BA%97%E8%88%97%E4%B8%80%E8%A6%A7/%E5%94%90%E6%8F%9A%E3%81%92%E5%B0%82%E9%96%80-%E3%81%9F%E3%81%91%E7%94%B0%E5%95%86%E5%BA%97" target="_blank" rel="noopener noreferrer" class="partner-link aspect-[2/1] bg-white rounded-xl shadow-sm border border-slate-200 p-2 fade-up delay-200"><img src="02_takeda.png" alt="たけ田商店" class="max-h-full max-w-full object-contain"></a>
+          
+          <div class="partner-link aspect-[2/1] bg-white rounded-xl shadow-sm border border-slate-200 p-2 fade-up delay-300">
+            <img src="03_keiei.png" alt="経営支援センター" class="max-h-full max-w-full object-contain">
+          </div>
+          
+          <a href="https://isiden.jp/" target="_blank" rel="noopener noreferrer" class="partner-link aspect-[2/1] bg-white rounded-xl shadow-sm border border-slate-200 p-2 fade-up delay-400"><img src="04_ishikawa.png" alt="石川電気" class="max-h-full max-w-full object-contain"></a>
+          <a href="https://www.s-coast.jp/" target="_blank" rel="noopener noreferrer" class="partner-link aspect-[2/1] bg-white rounded-xl shadow-sm border border-slate-200 p-2 fade-up delay-100"><img src="05_sausukosuto.png" alt="サウスコースト" class="max-h-full max-w-full object-contain"></a>
+          <a href="https://www.kokuba-hifuka.com/" target="_blank" rel="noopener noreferrer" class="partner-link aspect-[2/1] bg-white rounded-xl shadow-sm border border-slate-200 p-2 fade-up delay-200"><img src="06_kokuba.png" alt="こくば皮膚科" class="max-h-full max-w-full object-contain"></a>
+        </div>
+      </div>
     </section>
-<!-- =========================================
+
+    <!-- =========================================
          年間スポンサー セクション（オフィシャルパートナー設定引用・常時3列）
-        ========================================= -->
+    ========================================= -->
     <!-- スマホでは左右の余白を少し狭めて(px-4)、3列のスペースを確保します -->
     <section id="annual-sponsor" class="py-12 px-4 md:px-8 bg-slate-50 border-t border-slate-200/60">
       <div class="text-center mb-10 fade-up">
